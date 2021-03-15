@@ -3,6 +3,24 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from  django.views.generic import  View
 from .models import Product
+from django.contrib import messages
+
+from django.contrib.messages.views import SuccessMessageMixin
+
+from django.views.generic.edit import UpdateView, DeleteView, CreateView # new
+
+class ProductC_create(SuccessMessageMixin, CreateView):
+    model = Product
+    template_name = 'create.html'
+    fields='__all__'
+    
+    success_url = '/create/'
+    success_message = "Hello world"
+    
+    
+    
+
+
 
 class  Product_view(View):
     def get(self, request):
@@ -22,7 +40,7 @@ class  Product_view(View):
             product_ids = request.POST.getlist('id[]')
             for id in product_ids:
                 product = Product.objects.get(pk=id)
-                print(product)
+                # print(product)
                 product.delete()
 
-            return redirect('home')
+        return redirect('home')
