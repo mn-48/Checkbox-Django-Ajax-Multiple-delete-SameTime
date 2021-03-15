@@ -1,0 +1,51 @@
+<html>
+
+    <table cellspacing="0" rules="all" border="1" id="Table1" style="border-collapse: collapse;">
+        <tr>
+            <th>&nbsp;</th>
+            <th style="width:80px">Name</th>
+            <th style="width:120px">Category</th>
+            <th style="width:120px">Price</th>
+        </tr>
+        {% for prod in products %}
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>{{ prod.name }}</td>
+            <td>{{ prod.category }}</td>
+            <td>{{ prod.price }}</td>
+        </tr>
+       
+          
+        {% endfor %}
+       
+    </table>
+    <br />
+    <input id = "btnGet" type="button" value="Get Selected" />
+    
+    
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //Assign Click event to Button.
+            $("#btnGet").click(function () {
+                var message = "Id Name                  Country\n";
+     
+                //Loop through all checked CheckBoxes in GridView.
+                $("#Table1 input[type=checkbox]:checked").each(function () {
+                    var row = $(this).closest("tr")[0];
+                    message += row.cells[1].innerHTML;
+                    message += "   " + row.cells[2].innerHTML;
+                    message += "   " + row.cells[3].innerHTML;
+                    message += "\n";
+                });
+     
+                //Display selected Row data in Alert Box.
+                alert(message);
+                return false;
+            });
+        });
+    </script>
+
+
+</html>
