@@ -1,4 +1,4 @@
-{% extends '_base.html' %}
+<!-- {% extends '_base.html' %} -->
 
 
 {% block content %}
@@ -44,7 +44,9 @@
 
 </div>
 
-<script src= "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!-- <script src= "https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -52,19 +54,22 @@
             if(confirm("Are you sure want to delete this item?")){
                 var id = [];
                 var csrf=$('input[name=csrfmiddlewaretoken]').val()
+                // $('[name="csrfmiddlewaretoken"]').val()
+                // const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
                 $(':checkbox:checked').each(function(i){
                     id[i]=$(this).val();
                 })
                 if(id.length ===0){
                     alert("Please select items to delete.")
                 }else{
-                    console.log(id)
+                    console.log(id);
                     $.ajax({
                         url:'.',
                         method:"POST",
                         data:{
                             id,
-                            csrfmiddlewaretoken:csrf
+                            // csrfmiddlewaretoken:csrftoken
+                            'csrfmiddlewaretoken': csrf,
                         },
                         success:function(response){
                             for(var i=0; i<id.length;i++){
