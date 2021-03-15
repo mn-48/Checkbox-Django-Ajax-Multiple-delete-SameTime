@@ -17,8 +17,6 @@ class ProductC_create(SuccessMessageMixin, CreateView):
     success_url = '/create/'
     success_message = "Hello world"
     
-    
-    
 
 
 
