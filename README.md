@@ -1,1 +1,1 @@
-# Django-Ajax-Multiple-delete-SameTime
+# Chechbox Django-Ajax-Multiple-delete-SameTime
