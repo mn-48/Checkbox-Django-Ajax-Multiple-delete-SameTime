@@ -21,7 +21,7 @@
                 <th>Product Name</th>
                 <th>Catagory</th>
                 <th>Price</th>
-                <th>Delete</th>
+                <th>Delete<input type="checkbox" id="select-all"></th>
     
             </thead>
             <tbody>
@@ -53,11 +53,17 @@
 </div>
 
 
-<!-- <script src= "https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+<script src= "https://code.jquery.com/jquery-2.2.4.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <script type="text/javascript">
+     document.getElementById('select-all').onclick = function () {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            for (var checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+        },
     $(document).ready(function(){
         $('#delete_btn').click(function(){
             if(confirm("Are you sure want to delete this item?")){
@@ -105,11 +111,6 @@
 {% endblock content %}
 
 {% block scripts %}
-<!-- 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-
-<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
-<!-- <script> -->
 
   
 {% endblock scripts %}

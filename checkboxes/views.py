@@ -37,8 +37,9 @@ class  Product_view(View):
         if request.method == "POST":
             product_ids = request.POST.getlist('id[]')
             for id in product_ids:
-                product = Product.objects.get(pk=id)
-                # print(product)
-                product.delete()
+                if id.isnumeric():
+                    product = Product.objects.get(pk=id)
+                    print(product)
+                    # product.delete()
 
         return redirect('home')
