@@ -36,6 +36,8 @@ class  Product_view(View):
     def post(self, request, *args, **kwargs):
         if request.method == "POST":
             product_ids = request.POST.getlist('id[]')
+            product_company = request.POST.get('company')
+            print('product_company:',product_company)
             for id in product_ids:
                 if id.isnumeric():
                     product = Product.objects.get(pk=id)
